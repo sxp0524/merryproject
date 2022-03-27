@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ywhhyzj.dao.MarrierMapper">
+    
+    <insert id="addMarrier" parameterType="marrierinfo">
+        insert into wedding.marrier_info (groom_name,groom_mobile,bride_name,bride_mobile)
+        values (#{groom_name},#{groom_mobile},#{bride_name},#{bride_mobile});
+    </insert>
+
+    <delete id="deleteMarrierById" parameterType="int">
+        delete from wedding.marrier_info where wedding_id = #{marrierId}
+    </delete>
+
+    <update id="updateMarrier" parameterType="marrierinfo">
+        update wedding.marrier_info
+        set groom_name=#{groom_name},groom_mobile=#{groom_mobile},bride_name=#{bride_name},bride_mobile=#{bride_mobile}
+        where wedding_id=#{weddingId};
+    </update>
+
+    <select id="queryMarrierById" resultType="marrierinfo">
+        select * from wedding.marrier_info
+        where wedding_id = #{marrierId}
+    </select>
+
+    <select id="queryAllMarrier" resultType="marrierinfo">
+        select * from wedding.marrier_info
+    </select>
+
+</mapper>
